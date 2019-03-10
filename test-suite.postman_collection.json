@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "20ef7c78-e53f-4ee2-84ea-b355e3ea2e55",
+		"name": "test-suite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "find single employee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{emp-svc-pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{emp-svc-url}}/employees/5c8402679c0b15000189863a",
+					"host": [
+						"{{emp-svc-url}}"
+					],
+					"path": [
+						"employees",
+						"5c8402679c0b15000189863a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all employees",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{emp-svc-pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{emp-svc-url}}/employees/",
+					"host": [
+						"{{emp-svc-url}}"
+					],
+					"path": [
+						"employees",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create employee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{emp-svc-pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ow333c3e@some.doihin\",\n    \"name\": \"name name name\",\n    \"birthday\": \"1999-12-02\",\n    \"department\":    {\n        \"id\": \"5c83222219049\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{emp-svc-url}}/employees/",
+					"host": [
+						"{{emp-svc-url}}"
+					],
+					"path": [
+						"employees",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update employee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{emp-svc-pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"email\": \"h.porrr@some.domain\",\n    \"name\": \"harry porter\",\n    \"birthday\": \"1999-12-02\",\n    \"department\": null\n}"
+				},
+				"url": {
+					"raw": "{{emp-svc-url}}/employees/5c83ee1f9c0b1500016aadbc",
+					"host": [
+						"{{emp-svc-url}}"
+					],
+					"path": [
+						"employees",
+						"5c83ee1f9c0b1500016aadbc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new departments",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{emp-svc-pass}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"department 1\"\n}"
+				},
+				"url": {
+					"raw": "{{emp-svc-url}}/departments",
+					"host": [
+						"{{emp-svc-url}}"
+					],
+					"path": [
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all departments",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pass",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:18080/departments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "events",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pass2",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "audit",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:28080/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28080",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all events",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "pass2",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "audit",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:28080/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "28080",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

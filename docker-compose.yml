@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  db:
+    image: mongo:3.4.15
+    volumes:
+    - mongodb:/db
+    ports:
+    - 47017:27017
+  
+  mq:
+    image: rabbitmq:alpine
+  
+  employee:
+    build: employee/
+    depends_on:
+    - db
+    - mq
+    ports:
+    - 18080:8080
+    - 8888:8888
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://db:27017/employee
+      SPRING_RABBITMQ_HOST: mq
+      SPRING_RABBITMQ_PORT: 5672
+      EVENT_QUEUE_NAME: employee_event
+  
+  eventdb:
+    image: mongo:3.4.15
+    volumes:
+    - eventdb:/db
+    ports:
+    - 57017:27017
+
+  event:
+    build: event/
+    depends_on:
+    - mq
+    - eventdb
+    - employee
+    ports:
+    - 28080:8080
+    - 9999:8888    
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://eventdb:27017/event
+      SPRING_RABBITMQ_HOST: mq
+      SPRING_RABBITMQ_PORT: 5672
+      EVENT_QUEUE_NAME: employee_event
+      
+  integration_test:
+    build: integration_test/
+    depends_on:
+    - employee
+    - event
+    # workaround: restart until other services are available
+    restart: on-failure
+    
+volumes:
+  mongodb:
+  eventdb:
