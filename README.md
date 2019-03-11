@@ -1,10 +1,10 @@
-# Employee­ & Event­Service
+# Employee & Event Service
 
 ### Summary
 
 The system runs on Docker/Docker compose, please make sure that [Docker](https://www.docker.com/) is installed.
 
-The system consists of 2 REST service, 1 MongoDB instance, 1 RabbitMq instance and 1 non-lasting instance for integration test.
+The system consists of 2 REST service, 2 MongoDB instance2, 1 RabbitMq instance and 1 non-lasting instance for integration test.
 
 To start up the system, run command:
 
@@ -34,3 +34,7 @@ Postman test scripts for the REST endpoints:
 ### Integration test
 
 Integration test will be performed after all services are available. It may try multiple times before the test is successful.
+
+The integration test can be run separately after the syste is up by:
+
+`docker-compose up integration_test`
