@@ -35,6 +35,6 @@ Postman test scripts for the REST endpoints:
 
 Integration test will be performed after all services are available. It may try multiple times before the test is successful.
 
-The integration test can be run separately after the syste is up by:
+The integration test can be run separately after the system is up by:
 
 `docker-compose up integration_test`
